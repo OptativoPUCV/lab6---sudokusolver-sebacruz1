@@ -45,75 +45,56 @@ void print_node(Node* n){
 
 int is_valid(Node* n)
 {
-  int i;
-  int j;
-  int k;
-  int p;
-  int aux;
-  int *array = (int*) calloc(10,sizeof(int));
-  for (j = 0 ; j < 9 ; j++) 
-  {
-    for (i = 0; i < 9; i++){
-      if (n->sudo[i][j] != 0)
-      {
-        aux = n->sudo[i][j];
-        array[aux]++;
-        if (array[aux] > 1)return 0;
-      }
-    }
-    for (k = 0; k < 10;k++)
-    {
-      array[k] = 0;
-    }
-  }
-  
-  for (k = 0; k < 10;k++)
-  {
-    array[k] = 0;
-  }
-  
-  for (i = 0 ; i < 9 ; i++)
-  {
-    for (j = 0; j < 9; j++)
-    {
-      if (n->sudo[i][j] != 0)
-      {
-        aux = n->sudo[i][j];
-        array[aux]++;
-        if (array[aux] > 1) return 0;
-      }
-    }
-    for (k = 0; k < 10;k++)
-    {
-      array[k] = 0;
-    }
-  }
+    for(int f=0;f<9;f++){
 
-  for (k = 0; k < 10;k++)
-  {
-      array[k] = 0;
-  }
-  
-  for (k = 0; k < 9 ; k++)
-  { 
-    for (p=0;p<9;p++)
-    {
-      i=3*(k/3) + (p/3) ;
-      j=3*(k%3) + (p%3) ;
-      if (n->sudo[i][j] != 0)
-      {
-        aux = n->sudo[i][j];
-        array[aux]++;
-        if (array[aux] > 1)return 0; 
-      }
-    }
-    for (k = 0; k < 10;k++)
-    {
-      array[k] = 0;
-    }
-  }
+      int arrayFila[10]={0};
+      int arrayCol[10]={0};
+      int arraySub[10]={0};
 
-  return 1;
+         for (int c=0;c<9;c++){
+
+            if (n->sudo[f][c]!=0)
+            {
+                if (arrayFila[n->sudo[f][c]]==1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    arrayFila[n->sudo[f][c]]=1;
+                }
+            }
+
+             if (n->sudo[c][f]!=0)
+             {
+                if (arrayCol[n->sudo[c][f]]==1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    arrayCol[n->sudo[c][f]]=1;
+                }
+            }
+              int i=3*(f/3) + (c/3);
+              int j=3*(f%3) + (c%3);
+           
+             if (n->sudo[i][j]!=0)
+             {
+                 if(arraySub[n->sudo[i][j]]==1)
+                 {
+                     return 0;
+                 }
+                 else
+                 {
+                     arraySub[n->sudo[i][j]]=1;
+                 }
+             }
+        }
+
+    }
+    return 1;
+  
 }
 
 
