@@ -43,9 +43,77 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
+int is_valid(Node* n)
+{
+  int i;
+  int j;
+  int k;
+  int p;
+  int aux;
+  int *array = (int*) calloc(10,sizeof(int));
+  for (j = 0 ; j < 9 ; j++) 
+  {
+    for (i = 0; i < 9; i++){
+      if (n->sudo[i][j] != 0)
+      {
+        aux = n->sudo[i][j];
+        array[aux]++;
+        if (array[aux] > 1)return 0;
+      }
+    }
+    for (k = 0; k < 10;k++)
+    {
+      array[k] = 0;
+    }
+  }
+  
+  for (k = 0; k < 10;k++)
+  {
+    array[k] = 0;
+  }
+  
+  for (i = 0 ; i < 9 ; i++)
+  {
+    for (j = 0; j < 9; j++)
+    {
+      if (n->sudo[i][j] != 0)
+      {
+        aux = n->sudo[i][j];
+        array[aux]++;
+        if (array[aux] > 1) return 0;
+      }
+    }
+    for (k = 0; k < 10;k++)
+    {
+      array[k] = 0;
+    }
+  }
 
-    return 1;
+  for (k = 0; k < 10;k++)
+  {
+      array[k] = 0;
+  }
+  
+  for (k = 0; k < 9 ; k++)
+  { 
+    for (p=0;p<9;p++)
+    {
+      i=3*(k/3) + (p/3) ;
+      j=3*(k%3) + (p%3) ;
+      if (n->sudo[i][j] != 0)
+      {
+        aux = n->sudo[i][j];
+        array[aux]++;
+        if (array[aux] > 1)return 0; 
+      }
+    }
+    for (k = 0; k < 10;k++)
+    {
+      array[k] = 0;
+    }
+  }
+
+  return 1;
 }
 
 
