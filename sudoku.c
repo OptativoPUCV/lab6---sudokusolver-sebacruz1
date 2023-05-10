@@ -135,31 +135,24 @@ int is_final(Node* n)
   return 1;
 }
 
-Node* DFS(Node* initial, int* cont)
-{
-  return NULL;
-  /*
-  Stack* aux = createStack();
-  push(aux,initial);
+Node* DFS(Node* initial, int* cont){
+  Stack * aux = createStack();
+  push(aux, initial);
 
-  while(is_empty(aux) != 1)
-  {
-    Node* primero = top(aux);
+  while(is_empty(aux) != 1){
+
+    Node * primero = top(aux);
     pop(aux);
-    
     if(is_final(primero) == 1) return primero;
-    List* lista = get_adj_nodes(primero);
-
-    Node* nodos = first(lista);
+    List * lista = get_adj_nodes(primero);
+    Node * nodos = first(lista);
     while(nodos != NULL){
       push(aux,nodos);
       nodos = next(lista);
     }
   }
   return NULL;
-}*/
 }
-
 
 
 
