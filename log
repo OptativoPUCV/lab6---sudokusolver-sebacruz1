@@ -86,3 +86,20 @@ Wed 10 May 2023 12:14:26 AM UTC:
  tests:  6|2
 total_score: 45/70
 0da2657
+Wed 10 May 2023 03:03:37 AM UTC: 
+ sudoku.c | 56 +++++++++++++-------------------------------------------
+ 1 file changed, 13 insertions(+), 43 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:48:16: error: unused variable ‘p’ [-Werror=unused-variable]
+   48 |   int i, j, k, p;
+      |                ^
+sudoku.c:48:13: error: unused variable ‘k’ [-Werror=unused-variable]
+   48 |   int i, j, k, p;
+      |             ^
+sudoku.c:68:1: error: control reaches end of non-void function [-Werror=return-type]
+   68 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+4c9eb94
